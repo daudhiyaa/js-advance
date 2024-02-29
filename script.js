@@ -201,3 +201,40 @@ const objectNames = names.map((name) => ({
   length: name.length,
 }));
 console.table(objectNames);
+
+// ===== Konsep `this` pada Arrow Function =====
+
+// Object Literal (tanpa arrow function) => tidak eror
+const murid1 = {
+  name: "Your Name",
+  energy: 10,
+  makan: function (porsi) {
+    this.energy += porsi;
+    console.log(`Halo ${this.name}, selamat makan!`);
+  },
+};
+
+// Object Literal (menggunakan arrow function) => // ! ERROR karena tidak ada konsep `this` pada arrow function
+const murid2 = {
+  name: "Your Name",
+  energy: 10,
+  makan: (porsi) => {
+    this.energy += porsi;
+    console.log(`Halo ${this.name}, selamat makan!`);
+  },
+};
+
+const box = document.querySelector(".box");
+box.addEventListener("click", function () {
+  let satu = "size";
+  let dua = "caption";
+
+  if (this.classList.contains(satu)) {
+    [satu, dua] = [dua, satu];
+  }
+
+  this.classList.toggle(satu);
+  setTimeout(() => {
+    this.classList.toggle(dua);
+  }, 600);
+});
