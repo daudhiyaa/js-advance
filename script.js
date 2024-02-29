@@ -180,3 +180,24 @@ let add = (() => {
 console.log(add());
 console.log(add());
 console.log(add());
+
+/*
+=========================
+==== ARROW FUNCTION =====
+=========================
+*/
+
+// ===== IMPLICIT RETURN ========
+const minus = (a, b) => a - b;
+console.log(minus(10, 5));
+
+const sayHello = (name) => `Hello ${name}`;
+const helloWorld = () => `Hello World`;
+
+// ===== =====
+const names = ["John", "Jane", "Bob"];
+const objectNames = names.map((name) => ({
+  name: name,
+  length: name.length,
+}));
+console.table(objectNames);
