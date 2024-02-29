@@ -238,3 +238,23 @@ box.addEventListener("click", function () {
     this.classList.toggle(dua);
   }, 600);
 });
+
+/*
+================================
+==== HIGHER ORDER FUNCTION =====
+================================
+*/
+
+// Contoh 1 : Function sebagai return value
+function salam(waktu) {
+  return (nama) => console.log(`Halo ${nama}, selamat ${waktu}`);
+}
+
+// Contoh 2 : Function sebagai argument/parameter
+function repeat(n, action) {
+  for (let i = 0; i < n; i++) {
+    action(i);
+  }
+}
+repeat(5, console.log);
+repeat(3, alert);
