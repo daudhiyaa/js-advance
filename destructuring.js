@@ -50,7 +50,8 @@ const student = {
 
 const { nama: na, umur: um, email: em = "youremailemail.com" } = student;
 
-// Mengambil field pada object, setelah dikirim sebagai parameter untuk function
+// Mengambil field pada object,
+// setelah dikirim sebagai parameter untuk function
 const stud = {
   id: 123,
   nama: "Nama",
@@ -59,3 +60,32 @@ const stud = {
 
 const getIdStudent = ({ id, nama }) => id;
 console.log(getIdStudent(stud)); // 123
+
+// ==== CONTOH 1 ====
+const kalkulasi = (a, b) => {
+  tambah = a + b;
+  kurang = a - b;
+  kali = a * b;
+  bagi = a / b;
+};
+
+// urutan tidak penting
+const { bagi, kurang, kali, tambah } = kalkulasi(2, 3);
+
+// ==== CONTOH 2 ====
+const mahasiswa = {
+  nama: "Nama",
+  umur: 20,
+  email: "email@com",
+  nilai: {
+    tugas: 80,
+    uts: 85,
+    uas: 75,
+  },
+};
+
+const cetakMhs = ({ nama, umur, nilai: { tugas, uts, uas } }) => {
+  return `Halo, nama saya ${nama}, saya berumur ${umur} tahun, dan nilai uas saya adalah ${uas}`;
+};
+
+console.log(cetakMhs(mahasiswa));
