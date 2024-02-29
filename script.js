@@ -157,9 +157,7 @@ init();
 
 // ===== FUNCTION FACTORIES ========
 function ucapkanSalam(waktu) {
-  return (nama) => {
-    console.log(`Halo ${nama}, selamat ${waktu}`);
-  };
+  return (nama) => console.log(`Halo ${nama}, selamat ${waktu}`);
 }
 
 let selamatPagi = ucapkanSalam("Pagi");
@@ -175,7 +173,7 @@ let add = (() => {
   return () => {
     return ++counter;
   };
-})(); // immediately invoked function expression (IIFE) => (function(){....})()
+})();
 
 console.log(add());
 console.log(add());
@@ -214,7 +212,8 @@ const murid1 = {
   },
 };
 
-// Object Literal (menggunakan arrow function) => // ! ERROR karena tidak ada konsep `this` pada arrow function
+// Object Literal (menggunakan arrow function) =>
+// ! ERROR karena tidak ada konsep `this` pada arrow function
 const murid2 = {
   name: "Your Name",
   energy: 10,
@@ -234,6 +233,10 @@ box.addEventListener("click", function () {
   }
 
   this.classList.toggle(satu);
+
+  // akan dilakukan hoisting
+  // jika tidak menggunakan arrow function,
+  // maka `this` akan merujuk pada window
   setTimeout(() => {
     this.classList.toggle(dua);
   }, 600);
@@ -258,3 +261,29 @@ function repeat(n, action) {
 }
 repeat(5, console.log);
 repeat(3, alert);
+
+// ===== FILTER, MAP, REDUCE ======
+const angka = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// 1. Filter
+const angkaGenap = angka.filter((a) => a % 2 === 0);
+
+// 2. Map
+const angkaPangkat = angka.map((a) => a * a);
+
+// 3. Reduce
+// jumlahkan seluruh elemen pada array
+// a = accumulator, c = currentValue
+const startValue = 0;
+const total = angka.reduce((a, c) => a + c, startValue);
+
+// ===== METHOD CHAINING ======
+/*
+ * Cari Angka 5, lalu kalikan 3,
+ * lalu jumlahkan semua hasilnya
+ */
+
+const result = angka
+  .filter((a) => a > 5)
+  .map((a) => a * 3)
+  .reduce((a, c) => a + c, startValue);
