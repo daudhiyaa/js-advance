@@ -31,3 +31,23 @@ const el = `<div class="mhs">
 const a = 10;
 const b = 15;
 const res = `Hasil penjumlahan ${a} + ${b} = ${a + b}`;
+
+// ==== TAGGED TEMPLATE ====
+function highlight(strings, ...values) {
+  return strings.reduce(
+    (result, str, i) =>
+      `${result}${str} <span class="hl">${values[i] || ""}</span>`,
+    ""
+  );
+}
+
+const str = highlight`Halo, nama saya ${mhs.name}, saya berusia ${mhs.age} tahun,dan email saya adalah ${mhs.email}`;
+
+console.log(str);
+
+/**
+ * Kegunaan Lainnya dari Tagged Template:
+ * 1. Sanitasi HTML
+ * 2. Internationalization & Localization
+ * 3. Styled Components
+ */
