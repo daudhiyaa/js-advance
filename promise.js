@@ -76,3 +76,11 @@ Promise.all([film, cuaca])
     console.log(film);
     console.log(cuaca);
   });
+
+// Fetch is returning a promise
+fetch(url).then((response) =>
+  response
+    .json()
+    // `then` bisa dijalankan berulang kali
+    .then((results) => console.log(results))
+);
